@@ -39,8 +39,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: HomeLayout.routeName,
       routes: {
-        HomeLayout.routeName: (_) => HomeLayout(),
-        TaskEditScreen.routeName: (_) => TaskEditScreen(),
+        HomeLayout.routeName: (_) => const HomeLayout(),
+        TaskEditScreen.routeName: (_) => const TaskEditScreen(),
       },
     );
   }

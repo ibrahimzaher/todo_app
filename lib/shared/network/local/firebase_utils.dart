@@ -22,6 +22,7 @@ Stream<QuerySnapshot<Task>> getFromFireStore(DateTime dateTime) {
   return getCollectionReference()
       .where('date', isGreaterThanOrEqualTo: first)
       .where('date', isLessThan: last)
+      .orderBy('date')
       .snapshots();
 }
 
@@ -30,6 +31,16 @@ Future<void> updateIsDone(Task task) {
       const Duration(
         milliseconds: 500,
       ), onTimeout: () {
-    print('updated successully');
+    // print('updated successully');
+  });
+}
+
+updateTask(Task task) {
+  print(task.id);
+  return getCollectionReference().doc(task.id).update(task.toJson()).timeout(
+      const Duration(
+        milliseconds: 500,
+      ), onTimeout: () {
+    // print('updated successully');
   });
 }
