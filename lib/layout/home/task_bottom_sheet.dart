@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_app/models/task/task.dart';
 import 'package:todo_app/shared/components/my_spacer.dart';
 import 'package:todo_app/shared/components/my_text_form_field.dart';
+import 'package:todo_app/shared/network/local/firebase_utils.dart';
 import 'package:todo_app/shared/provider/theme_provider.dart';
 import 'package:todo_app/shared/styles/colors.dart';
 
@@ -87,7 +89,12 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
                   ),
                 ),
                 onPressed: () {
+                  Task task = Task(
+                      title: title.text,
+                      date: dateTime.millisecondsSinceEpoch,
+                      description: description.text);
                   if (formKey.currentState!.validate()) {
+                    addTask(task);
                     Navigator.of(context).pop();
                   }
                 },
@@ -122,5 +129,21 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
       dateTime = value;
       setState(() {});
     });
+  }
+
+  void addTask(Task task) {
+    addToFireStore(task).timeout(
+      const Duration(
+        milliseconds: 500,
+      ),
+      onTimeout: () {
+        print(task.id);
+        print(task.title);
+        print(task.description);
+        print(task.isDone);
+        print(task.date);
+        print('Task added');
+      },
+    );
   }
 }
