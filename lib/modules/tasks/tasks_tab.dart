@@ -78,7 +78,10 @@ class _TasksTabState extends State<TasksTab> {
                   ),
                 );
               }
-              return ListView.builder(
+              return ListView.separated(
+                separatorBuilder: (context, index) => const Divider(
+                  color: Colors.transparent,
+                ),
                 itemBuilder: (context, index) => TaskItem(task: tasks[index]),
                 itemCount: tasks.length,
               );

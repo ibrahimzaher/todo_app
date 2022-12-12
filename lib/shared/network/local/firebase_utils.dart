@@ -35,7 +35,7 @@ Future<void> updateIsDone(Task task) {
   });
 }
 
-updateTask(Task task) {
+Future<void> updateTask(Task task) {
   print(task.id);
   return getCollectionReference().doc(task.id).update(task.toJson()).timeout(
       const Duration(
@@ -43,4 +43,15 @@ updateTask(Task task) {
       ), onTimeout: () {
     // print('updated successully');
   });
+}
+
+deleteTask(Task task) {
+  getCollectionReference().doc(task.id).delete().timeout(
+    const Duration(
+      milliseconds: 300,
+    ),
+    onTimeout: () {
+      print('deleted task successfully');
+    },
+  );
 }
