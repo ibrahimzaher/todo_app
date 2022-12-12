@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/layout/home/home_layout.dart';
 import 'package:todo_app/layout/provider/bottom_nav_bar_provider.dart';
+import 'package:todo_app/modules/tasks/task_edit_screen.dart';
 import 'package:todo_app/shared/provider/theme_provider.dart';
 import 'package:todo_app/shared/styles/my_theme.dart';
 
@@ -38,7 +39,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: HomeLayout.routeName,
       routes: {
-        HomeLayout.routeName: (_) => HomeLayout(),
+        HomeLayout.routeName: (_) => const HomeLayout(),
+        TaskEditScreen.routeName: (_) => const TaskEditScreen(),
       },
     );
   }
