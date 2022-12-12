@@ -22,6 +22,11 @@ class MyTheme {
         fontSize: 20,
         fontWeight: FontWeight.bold,
       ),
+      headline3: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+        color: blueColor,
+      ),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       shape: CircleBorder(
@@ -80,6 +85,11 @@ class MyTheme {
         color: hintDarkColor,
         fontSize: 20,
         fontWeight: FontWeight.bold,
+      ),
+      headline3: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+        color: blueColor,
       ),
     ),
     appBarTheme: AppBarTheme(

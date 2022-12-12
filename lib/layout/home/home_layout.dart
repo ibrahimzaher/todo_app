@@ -50,7 +50,7 @@ class HomeLayout extends StatelessWidget {
             ],
           ),
         ),
-        body: const [TasksTab(), SettingsTab()][provider.currentIndex],
+        body: [TasksTab(), SettingsTab()][provider.currentIndex],
       ),
     );
   }
