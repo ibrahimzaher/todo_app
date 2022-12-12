@@ -10,3 +10,5 @@ Color blackColor = const Color(0xff383838);
 Color hintLightColor = const Color(0xffA9A9A9);
 Color hintDarkColor = const Color(0xffCDCACA);
 Color bottomColor = const Color(0xff141922);
+Color greenColor = const Color(0xff61E757);
+Color redColor = const Color(0xffEC4B4B);

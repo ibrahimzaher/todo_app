@@ -24,3 +24,12 @@ Stream<QuerySnapshot<Task>> getFromFireStore(DateTime dateTime) {
       .where('date', isLessThan: last)
       .snapshots();
 }
+
+Future<void> updateIsDone(Task task) {
+  return getCollectionReference().doc(task.id).update({'isDone': true}).timeout(
+      const Duration(
+        milliseconds: 500,
+      ), onTimeout: () {
+    print('updated successully');
+  });
+}
