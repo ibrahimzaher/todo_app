@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_app/models/task/task.dart';
 import 'package:todo_app/shared/provider/theme_provider.dart';
 import 'package:todo_app/shared/styles/colors.dart';
 
 class TaskItem extends StatelessWidget {
-  const TaskItem({Key? key}) : super(key: key);
-
+  const TaskItem({Key? key, required this.task}) : super(key: key);
+  final Task task;
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<ThemeProvider>(context);
@@ -33,15 +34,15 @@ class TaskItem extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'Play basket ball',
+                  task.title,
                   style: Theme.of(context).textTheme.headline3,
                 ),
                 const SizedBox(
                   height: 4,
                 ),
-                const Text(
-                  'Play basket ball',
-                  style: TextStyle(color: Colors.grey),
+                Text(
+                  task.description,
+                  style: const TextStyle(color: Colors.grey),
                 ),
               ],
             ),
@@ -57,11 +58,16 @@ class TaskItem extends StatelessWidget {
               ),
             ),
             onPressed: () {},
-            child: Icon(
-              Icons.check_sharp,
-              color: whiteColor,
-              size: 30,
-            ),
+            child: task.isDone
+                ? Text(
+                    'Done!',
+                    style: Theme.of(context).textTheme.headline3,
+                  )
+                : Icon(
+                    Icons.check_sharp,
+                    color: whiteColor,
+                    size: 30,
+                  ),
           ),
         ],
       ),

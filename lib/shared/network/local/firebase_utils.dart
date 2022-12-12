@@ -13,3 +13,14 @@ Future<void> addToFireStore(Task task) {
   task.id = doc.id;
   return doc.set(task);
 }
+
+Stream<QuerySnapshot<Task>> getFromFireStore(DateTime dateTime) {
+  int first = DateTime(dateTime.year, dateTime.month, dateTime.day)
+      .millisecondsSinceEpoch;
+  int last = DateTime(dateTime.year, dateTime.month, dateTime.day + 1)
+      .millisecondsSinceEpoch;
+  return getCollectionReference()
+      .where('date', isGreaterThanOrEqualTo: first)
+      .where('date', isLessThan: last)
+      .snapshots();
+}
