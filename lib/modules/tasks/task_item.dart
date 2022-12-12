@@ -61,27 +61,39 @@ class TaskItem extends StatelessWidget {
                 color: task.isDone ? greenColor : blueColor,
                 width: 4,
               ),
+              const SizedBox(
+                width: 10,
+              ),
               Expanded(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      task.title,
-                      style: task.isDone
-                          ? Theme.of(context)
-                              .textTheme
-                              .headline3!
-                              .copyWith(color: greenColor)
-                          : Theme.of(context).textTheme.headline3,
+                    Center(
+                      child: Text(
+                        task.title,
+                        style: task.isDone
+                            ? Theme.of(context)
+                                .textTheme
+                                .headline3!
+                                .copyWith(color: greenColor)
+                            : Theme.of(context).textTheme.headline3,
+                      ),
                     ),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    Text(
-                      task.description,
-                      style: const TextStyle(color: Colors.grey),
+                    Container(
+                      margin: const EdgeInsetsDirectional.only(
+                        top: 4,
+                      ),
+                      child: Text(
+                        task.description,
+                        style: const TextStyle(color: Colors.grey),
+                      ),
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(
+                width: 10,
               ),
               task.isDone
                   ? Text(

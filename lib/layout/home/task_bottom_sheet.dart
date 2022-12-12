@@ -58,6 +58,7 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
               MyTextFormField(
                 hintText: 'Enter task description',
                 controller: description,
+                maxLines: 4,
                 inValid: 'Please enter your task description',
               ),
               const MySpacer(),

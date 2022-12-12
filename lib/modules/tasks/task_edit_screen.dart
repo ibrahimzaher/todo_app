@@ -88,6 +88,7 @@ class _TaskEditScreenState extends State<TaskEditScreen> {
                 MyTextFormField(
                   hintText: 'Enter task description',
                   controller: description,
+                  maxLines: 4,
                   inValid: 'Please enter your task description',
                 ),
                 const MySpacer(),
