@@ -27,6 +27,16 @@ class MyTheme {
         fontWeight: FontWeight.bold,
         color: blueColor,
       ),
+      headline2: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.bold,
+        color: blackColor,
+      ),
+      headline4: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: blueColor,
+      ),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       shape: CircleBorder(
@@ -89,6 +99,16 @@ class MyTheme {
       headline3: TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.bold,
+        color: blueColor,
+      ),
+      headline2: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.bold,
+        color: whiteColor,
+      ),
+      headline4: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
         color: blueColor,
       ),
     ),
