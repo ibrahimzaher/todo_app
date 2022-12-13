@@ -7,6 +7,7 @@ import 'package:todo_app/shared/components/my_text_form_field.dart';
 import 'package:todo_app/shared/network/local/firebase_utils.dart';
 import 'package:todo_app/shared/provider/theme_provider.dart';
 import 'package:todo_app/shared/styles/colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TaskEditScreen extends StatefulWidget {
   const TaskEditScreen({Key? key}) : super(key: key);
@@ -40,8 +41,8 @@ class _TaskEditScreenState extends State<TaskEditScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text(
-          'To Do List',
+        title: Text(
+          AppLocalizations.of(context)!.todolist,
         ),
       ),
       body: Padding(
@@ -74,26 +75,28 @@ class _TaskEditScreenState extends State<TaskEditScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  'Edit Task',
+                  AppLocalizations.of(context)!.edittask,
                   style: Theme.of(context).textTheme.headline6,
                   textAlign: TextAlign.center,
                 ),
                 const MySpacer(),
                 MyTextFormField(
-                  hintText: 'Enter task title',
+                  hintText: AppLocalizations.of(context)!.entertasktitle,
                   controller: title,
-                  inValid: 'Please enter your task title',
+                  inValid:
+                      AppLocalizations.of(context)!.pleaseenteryourtasktitle,
                 ),
                 const MySpacer(),
                 MyTextFormField(
-                  hintText: 'Enter task description',
+                  hintText: AppLocalizations.of(context)!.entertaskdescription,
                   controller: description,
                   maxLines: 4,
-                  inValid: 'Please enter your task description',
+                  inValid: AppLocalizations.of(context)!
+                      .pleaseenteryourtaskdescription,
                 ),
                 const MySpacer(),
                 Text(
-                  'Selected Date',
+                  AppLocalizations.of(context)!.selecteddate,
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 const MySpacer(),
@@ -133,8 +136,8 @@ class _TaskEditScreenState extends State<TaskEditScreen> {
                       Navigator.of(context).pop();
                     }
                   },
-                  child: const Text(
-                    'Save Changes',
+                  child: Text(
+                    AppLocalizations.of(context)!.savechanges,
                   ),
                 ),
               ],

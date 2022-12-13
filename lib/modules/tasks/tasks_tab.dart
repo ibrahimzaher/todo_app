@@ -8,6 +8,7 @@ import 'package:todo_app/shared/components/my_spacer.dart';
 import 'package:todo_app/shared/network/local/firebase_utils.dart';
 import 'package:todo_app/shared/provider/theme_provider.dart';
 import 'package:todo_app/shared/styles/colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TasksTab extends StatefulWidget {
   const TasksTab({super.key});
@@ -58,13 +59,13 @@ class _TasksTabState extends State<TasksTab> {
             stream: getFromFireStore(dateSelected),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
-                return const Text('Something went wrong');
+                return Text(AppLocalizations.of(context)!.somethingwentwrong);
               }
 
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(
                   child: Text(
-                    "Loading....",
+                    AppLocalizations.of(context)!.loading,
                     style: Theme.of(context).textTheme.bodyText1,
                   ),
                 );
@@ -73,7 +74,7 @@ class _TasksTabState extends State<TasksTab> {
               if (tasks.isEmpty) {
                 return Center(
                   child: Text(
-                    'Not have tasks today',
+                    AppLocalizations.of(context)!.nothavetasktoday,
                     style: Theme.of(context).textTheme.bodyText1,
                   ),
                 );
