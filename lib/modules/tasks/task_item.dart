@@ -6,6 +6,7 @@ import 'package:todo_app/modules/tasks/task_edit_screen.dart';
 import 'package:todo_app/shared/network/local/firebase_utils.dart';
 import 'package:todo_app/shared/provider/theme_provider.dart';
 import 'package:todo_app/shared/styles/colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TaskItem extends StatelessWidget {
   const TaskItem({Key? key, required this.task}) : super(key: key);
@@ -31,7 +32,7 @@ class TaskItem extends StatelessWidget {
             backgroundColor: redColor,
             foregroundColor: whiteColor,
             icon: Icons.delete,
-            label: 'Delete',
+            label: AppLocalizations.of(context)!.delete,
           ),
         ],
       ),
@@ -97,7 +98,7 @@ class TaskItem extends StatelessWidget {
               ),
               task.isDone
                   ? Text(
-                      'Done!',
+                      AppLocalizations.of(context)!.done,
                       style: Theme.of(context)
                           .textTheme
                           .headline3!

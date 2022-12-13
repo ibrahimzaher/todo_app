@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:todo_app/layout/provider/bottom_nav_bar_provider.dart';
 import 'package:todo_app/modules/settings/settings_tab.dart';
 import 'package:todo_app/modules/tasks/tasks_tab.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeLayout extends StatelessWidget {
   const HomeLayout({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class HomeLayout extends StatelessWidget {
         resizeToAvoidBottomInset: true,
         appBar: AppBar(
           title: Text(
-            'To Do List',
+            AppLocalizations.of(context)!.todolist,
             style: Theme.of(context).textTheme.headline5,
           ),
         ),
@@ -34,18 +35,18 @@ class HomeLayout extends StatelessWidget {
             onTap: (index) {
               provider.changeTabs(index);
             },
-            items: const [
+            items: [
               BottomNavigationBarItem(
-                icon: Icon(
+                icon: const Icon(
                   Icons.list_outlined,
                 ),
-                label: 'Tasks',
+                label: AppLocalizations.of(context)!.tasks,
               ),
               BottomNavigationBarItem(
-                icon: Icon(
+                icon: const Icon(
                   Icons.settings,
                 ),
-                label: 'Settings',
+                label: AppLocalizations.of(context)!.settings,
               ),
             ],
           ),

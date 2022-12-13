@@ -1,41 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/shared/components/my_spacer.dart';
-import 'package:todo_app/shared/provider/theme_provider.dart';
+import 'package:todo_app/shared/provider/language_provider.dart';
 import 'package:todo_app/shared/styles/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class ModeBottomSheet extends StatelessWidget {
-  const ModeBottomSheet({Key? key}) : super(key: key);
+class LanguageBottomSheet extends StatelessWidget {
+  const LanguageBottomSheet({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<ThemeProvider>(context);
+    var provider = Provider.of<LanguageProvider>(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          provider.isDark()
-              ? selectedWidget(AppLocalizations.of(context)!.dark, context)
-              : selectedWidget(AppLocalizations.of(context)!.light, context),
+          provider.language == 'Arabic'
+              ? selectedWidget(AppLocalizations.of(context)!.arabic, context)
+              : selectedWidget(AppLocalizations.of(context)!.english, context),
           const MySpacer(
             height: 20,
           ),
-          provider.isDark()
-              ? unSelectedWidget(AppLocalizations.of(context)!.light, context)
-              : unSelectedWidget(AppLocalizations.of(context)!.dark, context),
+          provider.language == 'Arabic'
+              ? unSelectedWidget(AppLocalizations.of(context)!.english, context)
+              : unSelectedWidget(AppLocalizations.of(context)!.arabic, context),
         ],
       ),
     );
   }
 }
 
-Widget selectedWidget(String mode, context) {
-  var provider = Provider.of<ThemeProvider>(context);
+Widget selectedWidget(String lang, context) {
+  var provider = Provider.of<LanguageProvider>(context);
   return InkWell(
     onTap: () {
-      provider.toggleTheme(mode == 'Light' ? ThemeMode.light : ThemeMode.dark);
+      provider.toggleLanguage(lang);
     },
     child: Container(
       padding: const EdgeInsetsDirectional.all(
@@ -48,7 +48,7 @@ Widget selectedWidget(String mode, context) {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            mode,
+            lang,
             style: Theme.of(context).textTheme.headline4!.copyWith(
                   fontSize: 18,
                 ),
@@ -64,12 +64,12 @@ Widget selectedWidget(String mode, context) {
   );
 }
 
-Widget unSelectedWidget(String mode, context) {
-  var provider = Provider.of<ThemeProvider>(context);
+Widget unSelectedWidget(String lang, context) {
+  var provider = Provider.of<LanguageProvider>(context);
 
   return InkWell(
     onTap: () {
-      provider.toggleTheme(mode == 'Light' ? ThemeMode.light : ThemeMode.dark);
+      provider.toggleLanguage(lang);
     },
     child: Container(
       padding: const EdgeInsetsDirectional.all(
@@ -78,7 +78,7 @@ Widget unSelectedWidget(String mode, context) {
       width: double.infinity,
       color: Colors.white,
       child: Text(
-        mode,
+        lang,
         style: Theme.of(context).textTheme.headline2!.copyWith(
               color: darkColor,
             ),
