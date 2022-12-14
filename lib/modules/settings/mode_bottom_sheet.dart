@@ -35,7 +35,9 @@ Widget selectedWidget(String mode, context) {
   var provider = Provider.of<ThemeProvider>(context);
   return InkWell(
     onTap: () {
-      provider.toggleTheme(mode == 'Light' ? ThemeMode.light : ThemeMode.dark);
+      provider.toggleTheme((mode == 'Light' || mode == 'المضىء')
+          ? ThemeMode.light
+          : ThemeMode.dark);
     },
     child: Container(
       padding: const EdgeInsetsDirectional.all(
@@ -69,7 +71,9 @@ Widget unSelectedWidget(String mode, context) {
 
   return InkWell(
     onTap: () {
-      provider.toggleTheme(mode == 'Light' ? ThemeMode.light : ThemeMode.dark);
+      provider.toggleTheme((mode == 'Light' || mode == 'المضىء')
+          ? ThemeMode.light
+          : ThemeMode.dark);
     },
     child: Container(
       padding: const EdgeInsetsDirectional.all(
