@@ -12,7 +12,7 @@ class LanguageBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     var provider = Provider.of<LanguageProvider>(context);
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(20.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -41,10 +41,13 @@ Widget selectedWidget(String lang, context) {
     },
     child: Container(
       padding: const EdgeInsetsDirectional.all(
-        15,
+        8,
       ),
       decoration: BoxDecoration(
-        color: whiteColor,
+        borderRadius: BorderRadiusDirectional.circular(
+          2,
+        ),
+        color: Colors.grey.shade100,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,7 +60,6 @@ Widget selectedWidget(String lang, context) {
           ),
           Icon(
             Icons.check,
-            size: 30,
             color: blueColor,
           ),
         ],
@@ -77,15 +79,21 @@ Widget unSelectedWidget(String lang, context) {
     },
     child: Container(
       padding: const EdgeInsetsDirectional.all(
-        25,
+        8,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadiusDirectional.circular(
+          2,
+        ),
+        color: Colors.grey.shade600,
       ),
       width: double.infinity,
-      color: Colors.white,
       child: Text(
         lang,
-        style: Theme.of(context).textTheme.headline2!.copyWith(
-              color: darkColor,
-            ),
+        style: Theme.of(context)
+            .textTheme
+            .headline4!
+            .copyWith(fontSize: 18, color: darkColor),
       ),
     ),
   );

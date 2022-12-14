@@ -15,7 +15,8 @@ class SettingsTab extends StatelessWidget {
     var provider = Provider.of<ThemeProvider>(context);
     var providerLanguage = Provider.of<LanguageProvider>(context);
     return Container(
-      margin: const EdgeInsetsDirectional.all(20),
+      margin: const EdgeInsetsDirectional.all(12),
+      padding: const EdgeInsetsDirectional.all(12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -24,12 +25,14 @@ class SettingsTab extends StatelessWidget {
             style: Theme.of(context).textTheme.headline2,
           ),
           Container(
-            margin: const EdgeInsetsDirectional.all(10),
-            padding: const EdgeInsetsDirectional.all(10),
+            margin: const EdgeInsetsDirectional.all(8),
+            padding: const EdgeInsetsDirectional.all(8),
             decoration: BoxDecoration(
               borderRadius:
-                  const BorderRadiusDirectional.all(Radius.circular(10)),
-              color: whiteColor,
+                  const BorderRadiusDirectional.all(Radius.circular(8)),
+              color: provider.themeMode == ThemeMode.light
+                  ? whiteColor
+                  : whiteColor.withOpacity(.1),
             ),
             child: InkWell(
               onTap: () {
@@ -59,12 +62,14 @@ class SettingsTab extends StatelessWidget {
             style: Theme.of(context).textTheme.headline2,
           ),
           Container(
-            margin: const EdgeInsetsDirectional.all(10),
-            padding: const EdgeInsetsDirectional.all(10),
+            margin: const EdgeInsetsDirectional.all(8),
+            padding: const EdgeInsetsDirectional.all(8),
             decoration: BoxDecoration(
               borderRadius:
-                  const BorderRadiusDirectional.all(Radius.circular(10)),
-              color: whiteColor,
+                  const BorderRadiusDirectional.all(Radius.circular(8)),
+              color: provider.themeMode == ThemeMode.light
+                  ? whiteColor
+                  : whiteColor.withOpacity(.1),
             ),
             child: InkWell(
               onTap: () {
@@ -96,14 +101,14 @@ class SettingsTab extends StatelessWidget {
   void showModeBottomSheet(BuildContext context) {
     showModalBottomSheet(
         context: context,
-        builder: (context) =>
-            Container(color: darkColor, child: const ModeBottomSheet()));
+        builder: (context) => Container(
+            color: darkColor.withOpacity(.94), child: const ModeBottomSheet()));
   }
 
   void showLanguageBottomSheet(BuildContext context) {
     showModalBottomSheet(
         context: context,
-        builder: (context) =>
-            Container(color: darkColor, child: LanguageBottomSheet()));
+        builder: (context) => Container(
+            color: darkColor.withOpacity(.94), child: LanguageBottomSheet()));
   }
 }
