@@ -71,7 +71,9 @@ Widget unSelectedWidget(String lang, context) {
 
   return InkWell(
     onTap: () {
-      provider.toggleLanguage(lang);
+      provider.toggleLanguage((lang == 'Arabic' || lang == 'العربية')
+          ? lang = 'Arabic'
+          : lang = 'English');
     },
     child: Container(
       padding: const EdgeInsetsDirectional.all(
