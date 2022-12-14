@@ -16,13 +16,13 @@ class LanguageBottomSheet extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          provider.language == 'Arabic'
+          (provider.language == 'Arabic' || provider.language == 'العربية')
               ? selectedWidget(AppLocalizations.of(context)!.arabic, context)
               : selectedWidget(AppLocalizations.of(context)!.english, context),
           const MySpacer(
             height: 20,
           ),
-          provider.language == 'Arabic'
+          (provider.language == 'Arabic' || provider.language == 'العربية')
               ? unSelectedWidget(AppLocalizations.of(context)!.english, context)
               : unSelectedWidget(AppLocalizations.of(context)!.arabic, context),
         ],
@@ -35,7 +35,9 @@ Widget selectedWidget(String lang, context) {
   var provider = Provider.of<LanguageProvider>(context);
   return InkWell(
     onTap: () {
-      provider.toggleLanguage(lang);
+      provider.toggleLanguage((lang == 'Arabic' || lang == 'العربية')
+          ? lang = 'Arabic'
+          : lang = 'English');
     },
     child: Container(
       padding: const EdgeInsetsDirectional.all(

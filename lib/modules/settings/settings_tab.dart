@@ -39,7 +39,8 @@ class SettingsTab extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    providerLanguage.language == 'Arabic'
+                    (providerLanguage.language == 'Arabic' ||
+                            providerLanguage.language == 'العربية')
                         ? AppLocalizations.of(context)!.arabic
                         : AppLocalizations.of(context)!.english,
                     style: Theme.of(context).textTheme.headline4,
