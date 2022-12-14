@@ -80,6 +80,7 @@ class _TasksTabState extends State<TasksTab> {
                 );
               }
               return ListView.separated(
+                physics: const BouncingScrollPhysics(),
                 separatorBuilder: (context, index) => const Divider(
                   color: Colors.transparent,
                 ),

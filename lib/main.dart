@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:todo_app/layout/home/home_layout.dart';
 import 'package:todo_app/layout/provider/bottom_nav_bar_provider.dart';
 import 'package:todo_app/modules/tasks/task_edit_screen.dart';
+import 'package:todo_app/shared/network/local/my_shared_preferences.dart';
 import 'package:todo_app/shared/provider/language_provider.dart';
 import 'package:todo_app/shared/provider/theme_provider.dart';
 import 'package:todo_app/shared/styles/my_theme.dart';
@@ -14,15 +15,21 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await MySharedPreferences.init();
+  bool isDark = MySharedPreferences.getTheme() ?? false;
+  String lang = MySharedPreferences.getLanguage() ?? 'Arabic';
+  print(isDark);
+  print(lang);
   await FirebaseFirestore.instance.disableNetwork();
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => ThemeProvider(),
+          create: (_) => ThemeProvider(
+              themeMode: isDark ? ThemeMode.dark : ThemeMode.light),
         ),
         ChangeNotifierProvider(
-          create: (_) => LanguageProvider(),
+          create: (_) => LanguageProvider(language: lang),
         ),
         ChangeNotifierProvider(
           create: (_) => BottomNavBarProvider(),

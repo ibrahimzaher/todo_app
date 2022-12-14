@@ -20,6 +20,9 @@ class MyTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: Theme.of(context).textTheme.bodyText1,
+        enabledBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(style: BorderStyle.solid, color: Colors.grey),
+        ),
       ),
       style: Theme.of(context).textTheme.headline6,
       validator: (value) {
