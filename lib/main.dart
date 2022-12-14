@@ -17,7 +17,7 @@ void main() async {
   await Firebase.initializeApp();
   await MySharedPreferences.init();
   bool isDark = MySharedPreferences.getTheme() ?? false;
-  String lang = MySharedPreferences.getLanguage() ?? 'Arabic';
+  String lang = MySharedPreferences.getLanguage() ?? 'English';
   print(isDark);
   print(lang);
   await FirebaseFirestore.instance.disableNetwork();
